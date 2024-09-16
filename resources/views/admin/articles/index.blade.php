@@ -42,11 +42,11 @@
                                 <thead>
                                 <tr>
                                     <th>Image</th>
-                                    <th>Name</th>
                                     <th>Title</th>
+                                    <th>Category_name</th>
                                     <th>Content</th>
-                                    <th>Create_at</th>
-                                    <th>Update_at</th>
+                                    <th>Created_at</th>
+                                    <th>Updated_at</th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
@@ -55,19 +55,26 @@
                                 @foreach($articles as $article)
                                 <tr>
                                     <td>
-                                        <img src="{{$article->image}}">
+                                        @if(file_exists(public_path('storage/'.$article->image)))
+                                        <img src="{{asset('storage/'.$article->image)}}" alt="Article Image" width="100">
                                     </td>
-                                    <td>{{$article->id}}</td>
-                                    <td>{{$article->category_name}}</td>
-                                    <td>{{$article->title}}</td>
-                                    <td>{{$article->content}}</td>
-                                    <td>{{$article->created_ap}}</td>
-                                    <td>{{$article->updated_ap}}</td>
-                                    <td>
-                                        <a href="{{route('admin.articles.index')}}"  class="btn btn-sm btn-success"><i class="fa fa-eye"></i> View</a>
-                                        <a href="#"  class="btn btn-sm btn-primary"><i class="fa fa-pen"></i> Edit</a>
-                                        <a href="#"  class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Delete</a>
+                                    @else
+                                        <p>Image not found</p>
 
+                                    @endif
+                                    <td>{{$article->title}}</td>
+                                    <td>{{$article->category_name}}</td>
+                                    <td>{{$article->content}}</td>
+                                    <td>{{$article->created_at}}</td>
+                                    <td>{{$article->updated_at}}</td>
+                                    <td>
+                                        <a href="{{route('admin.articles.show',$article->id)}}"  class="btn btn-sm btn-success"><i class="fa fa-eye"></i> View</a>
+                                        <a href="{{route('admin.articles.edit',$article->id)}}"  class="btn btn-sm btn-primary"><i class="fa fa-pen"></i> Edit</a>
+                                        <form action="{{route('admin.articles.destroy',$article->id)}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"  class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach

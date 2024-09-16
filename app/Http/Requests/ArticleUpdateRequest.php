@@ -24,7 +24,7 @@ class ArticleUpdateRequest extends FormRequest
         return [
             'category_name'=>'required',
             'title'=>'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable',
             'content'=>'required',
 
         ];

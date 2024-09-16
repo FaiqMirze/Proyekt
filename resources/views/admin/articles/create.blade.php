@@ -51,6 +51,7 @@
 
                 <form action="{{route('admin.articles.store')}}" method="Post" enctype="multipart/form-data">
                     @csrf
+                    @method('POST')
                     <div class="form-group">
                         <label for="">Məqalə Basligi</label>
                         <input type="text" name="title" class="form-control" required>
