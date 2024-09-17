@@ -55,8 +55,10 @@
                                 @foreach($articles as $article)
                                 <tr>
                                     <td>
-                                        @if(file_exists(public_path('storage/'.$article->image)))
-                                        <img src="{{asset('storage/'.$article->image)}}" alt="Article Image" width="100">
+{{--                                        @if(file_exists(public_path('storage/'.$article->image)))--}}
+{{--                                  <img src="{{asset('storage/'.$article->image)}}" alt="Article Image" width="100">--}}
+                                  @if(filter_var($article->image,FILTER_VALIDATE_URL))
+                                      <img src="{{$article->image}}" alt="Article image" width="100">
                                     </td>
                                     @else
                                         <p>Image not found</p>
