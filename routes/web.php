@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 //front
 Route::get('/fronts',[\App\Http\Controllers\FrontController::class,'index'])->name('front.index');
-
+Route::get('/front/{id}',[\App\Http\Controllers\FrontController::class,'show'])->name('front.show');
 
 
 //admin
