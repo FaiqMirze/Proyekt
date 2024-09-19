@@ -26,7 +26,7 @@ class ArticleStoreRequest extends FormRequest
             'title'=>'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'content'=>'required',
-
+             'slug'=>'required|unique:articles,slug',
         ];
     }
 }

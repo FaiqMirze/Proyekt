@@ -1,12 +1,12 @@
 <div class="container px-4 px-lg-5">
 <div class="row gx-4 gx-lg-5 justify-content-center">
-    <div class="col-md-10 col-lg-8 col-xl-7">
+    @include('front.layouts.widget')
+    <div class="col-md-9 mx-auto">
         <!-- Post preview-->
         @foreach($articles as $article)
             <div class="post-preview">
-                <a href="{{route('front.show',$article->id)}}">
-
-
+{{--                <a href="{{route('front.show',$article->id)}}">--}}
+                <a href="{{route('front.show',$article->slug)}}">
                     <h2 class="post-title">{{$article->title}}</h2>
                     <img src="{{$article->image}}">
                     <h3 class="post-subtitle">{{Str::limit($article->content,50)}}</h3>

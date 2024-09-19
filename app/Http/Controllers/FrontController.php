@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -10,11 +11,13 @@ class FrontController extends Controller
     public function index()
     {
         $articles=Article::all();
-        return view('front.index',compact('articles'));
+        $categories=Category::all();
+        return view('front.index',compact('articles','categories'));
     }
-    public function  show($id)
+    public function  show($slug)
     {
-        $articles=Article::findOrFail($id);
-        return view('front.show',compact('articles'));
+        $articles=Article::where('slug',$slug)->firstOrFail();
+        $categories=Category::all();
+        return view('front.show',compact('articles','categories'));
     }
 }

@@ -27,6 +27,7 @@ class ArticleUpdateRequest extends FormRequest
             'image' => 'nullable',
             'content'=>'required',
 
+
         ];
     }
 }

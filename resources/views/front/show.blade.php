@@ -21,6 +21,8 @@
 <!-- Page Header-->
 @include('front.layouts.header')
 <!-- Main Content-->
+@include('front.layouts.widget')
+
 <!-- Post Content-->
 <article class="mb-4">
     <div class="container px-4 px-lg-5">

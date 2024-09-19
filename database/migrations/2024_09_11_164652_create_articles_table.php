@@ -17,10 +17,13 @@ return new class extends Migration
             $table->string('title');
             $table->string('content');
             $table->string('image');
+            $table->string('slug')->unique()->nullable();
             $table->timestamps();
             //$table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
+
+
 
     /**
      * Reverse the migrations.

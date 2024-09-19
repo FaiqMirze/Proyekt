@@ -7,6 +7,7 @@ use App\Http\Requests\ArticleUpdateRequest;
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {
@@ -44,6 +45,7 @@ class ArticleController extends Controller
             $article->category_name =$request->input('category_name');
             $article->image=$imagePath;
             $article->content=$request->input('content');
+             $article->slug=Str::slug($request->input('title'));
             $article->save();
             return redirect()->route('admin.articles.index');
 
