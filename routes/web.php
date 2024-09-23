@@ -21,10 +21,12 @@ Route::get('/', function () {
 Route::get('/fronts',[\App\Http\Controllers\FrontController::class,'index'])->name('front.index');
 //Route::get('/front/{id}',[\App\Http\Controllers\FrontController::class,'show'])->name('front.show');
 Route::get('/front/{slug}',[\App\Http\Controllers\FrontController::class,'show'])->name('front.show');
-
+Route::get('fronts/about',[\App\Http\Controllers\FrontController::class,'about'])->name('front.about');
 //admin
 Route::get('admin/login', [\App\Http\Controllers\AuthController::class, 'login'])->name('admin.login');
 Route::post('admin/login/post', [\App\Http\Controllers\AuthController::class, 'loginpost'])->name('admin.login.post');
+Route::get('admin/register',[\App\Http\Controllers\AuthController::class,'showRegisterForm'])->name('admin.register');
+Route::post('admin/register/post',[\App\Http\Controllers\AuthController::class,'register'])->name('admin.register.post');
 
 
 Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function () {

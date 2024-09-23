@@ -20,4 +20,9 @@ class FrontController extends Controller
         $categories=Category::all();
         return view('front.show',compact('articles','categories'));
     }
+
+     public function about(){
+        //dd(5);
+        return view('front.layouts.about');
+    }
 }

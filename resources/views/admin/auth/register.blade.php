@@ -46,36 +46,41 @@
                                 @if($errors->any())
                                     <div class=" alert alert-danger">{{$errors->first()}}</div>
                                 @endif
-                                <form class="user" action="{{route('admin.login.post')}}" method="Post">
+                                <form class="user" action="{{route('admin.register.post')}}" method="Post">
                                     @csrf
                                     <div class="form-group">
+                                        <input type="text" name="name" class="form-control form-control-user"
+                                               placeholder="Enter  Name...">
+                                    </div>
+                                    <div class="form-group">
                                         <input type="email" name="email" class="form-control form-control-user"
-                                               id="exampleInputEmail" aria-describedby="emailHelp"
-                                               placeholder="Enter Email Address...">
+                                                placeholder="Enter Email Address..">
                                     </div>
+
                                     <div class="form-group">
-                                        <input type="password" name="password" class="form-control form-control-user"
-                                               id="exampleInputPassword" placeholder="Password">
+                                        <input type="text" name="password" class="form-control form-control-user"
+                                                placeholder="Password">
                                     </div>
+
                                     <div class="form-group">
-                                        <div class="custom-control custom-checkbox small">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck">
-                                            <label class="custom-control-label" for="customCheck">Remember
-                                                Me</label>
-                                        </div>
+                                        <input type="text" name="password-confirmation" class="form-control form-control-user"
+                                               placeholder="Confirm Password">
                                     </div>
+
                                     <button type="submit" class="btn btn-primary btn-user btn-block">
-                                        Login
+                                        Register
                                     </button>
-{{--                        <a href="#" class="btn btn-primary btn-user btn-block">Register</a>--}}
-"
+                                    {{--                        <a href="#" class="btn btn-primary btn-user btn-block">Register</a>--}}
+                                    "
+
+
                                 </form>
-                               <div class="text-center  mt-4">
-                                   <p>
-                                       Don't have an account yet?
-                                       <a href="{{route('admin.register')}}">Register</a>
-                                   </p>
-                               </div>
+                                <div class="text-center  mt-4">
+                                    <p>
+                                         Have an account?
+                                        <a href="{{route('admin.login')}}">Login</a>
+                                    </p>
+                                </div>
 
                             </div>
                         </div>
@@ -102,3 +107,4 @@
 </body>
 
 </html>
+
