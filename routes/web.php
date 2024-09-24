@@ -22,11 +22,19 @@ Route::get('/fronts',[\App\Http\Controllers\FrontController::class,'index'])->na
 //Route::get('/front/{id}',[\App\Http\Controllers\FrontController::class,'show'])->name('front.show');
 Route::get('/front/{slug}',[\App\Http\Controllers\FrontController::class,'show'])->name('front.show');
 Route::get('fronts/about',[\App\Http\Controllers\FrontController::class,'about'])->name('front.about');
+Route::get('fronts/contact',[\App\Http\Controllers\FrontController::class,'contact'])->name('front.contact');
+Route::post('fronts/send',[\App\Http\Controllers\FrontController::class,'send'])->name('front.send');
+Route::get('fronts/vakansia',[\App\Http\Controllers\FrontController::class,'vakansia'])->name('front.vakansia');
+
+
+
 //admin
 Route::get('admin/login', [\App\Http\Controllers\AuthController::class, 'login'])->name('admin.login');
 Route::post('admin/login/post', [\App\Http\Controllers\AuthController::class, 'loginpost'])->name('admin.login.post');
 Route::get('admin/register',[\App\Http\Controllers\AuthController::class,'showRegisterForm'])->name('admin.register');
 Route::post('admin/register/post',[\App\Http\Controllers\AuthController::class,'register'])->name('admin.register.post');
+
+
 
 
 Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function () {

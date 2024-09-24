@@ -22,19 +22,15 @@
 <!-- Page Header-->
 @include('front.layouts.header')
 <!-- Main Content-->
-
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
-            <h3>About Us</h3>
-            <p>At <b>Global News</b>, we are committed to delivering the most current, reliable, and impactful news from around the world. Our mission is to bring the voices and stories from every corner of the globe to light, informing and empowering our readers.</p>
-            <p><b>Established:</b> September 1, 2024</p>
-            <p>We cover a wide range of topics, from politics to arts, science to technology, by closely following events happening worldwide. Our team consists of experienced journalists and researchers, each dedicated to earning your trust by investigating the background of every story and presenting accurate information.</p>
-            <p>With our slogan, <b>"Your Window to the World"</b> we strive not only to provide you with news but also to offer a deeper understanding of events, allowing you to see the broader context. Whether you seek daily news updates or in-depth analyses, Global News is always here for you.</p>
-            <p>The world is constantly changing, and we are committed to keeping pace with these changes by bringing you the latest developments. Enhance your access to information and get to know the world better with Global News.</p>
-        </div>
+            <h3>Vakansia</h3>
+              <p>Hazirda aktiv vakansia yoxdur</p>
+       </div>
     </div>
 </div>
+
 <!-- Footer-->
 @include('front.layouts.footer')
 <!-- Bootstrap core JS-->

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     public function login()
@@ -46,7 +46,7 @@ class AuthController extends Controller
          Admin::create([
              'name' => $request->name,
              'email' => $request->email,
-             'password' => encrypt($request->password),
+             'password' => Hash::make($request->password),
          ]);
          return redirect()->route('admin.login')->with('success', 'you have ben registered succsessfully');
      }}

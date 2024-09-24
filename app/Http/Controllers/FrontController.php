@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
 {
     public function index()
     {
-        $articles=Article::all();
+        $articles=Article::paginate(3);
         $categories=Category::all();
         return view('front.index',compact('articles','categories'));
     }
@@ -24,5 +25,31 @@ class FrontController extends Controller
      public function about(){
         //dd(5);
         return view('front.layouts.about');
+    }
+    public function contact()
+    {
+        return view('front.layouts.contact');
+    }
+
+    public function send(Request $request)
+    {
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required',
+            'subject'=>'required',
+            'message'=>'required'
+        ]);
+        Contact::create([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'subject'=>$request->subject,
+            'message'=>$request->message,
+        ]);
+        return redirect()->route('front.contact')->with('success', 'you have ben registered succsessfully');
+
+    }
+    public function vakansia()
+    {
+        return view('front.layouts.vakansia');
     }
 }
