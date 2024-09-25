@@ -52,4 +52,13 @@ class FrontController extends Controller
     {
         return view('front.layouts.vakansia');
     }
+
+
+    public function category($name){
+        $categories = Category::whereName($name)->first() ?? abort(404,'Bele bir kategori yoxdur!');
+        $articles = $categories->articles()->paginate(4);
+        return view('front.layouts.category', compact('categories', 'articles'));
+    }
+
+
 }

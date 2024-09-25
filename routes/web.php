@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,12 +21,12 @@ Route::get('/', function () {
 //front
 Route::get('/fronts',[\App\Http\Controllers\FrontController::class,'index'])->name('front.index');
 //Route::get('/front/{id}',[\App\Http\Controllers\FrontController::class,'show'])->name('front.show');
+Route::get('kategori/{category}', [FrontController::class, 'category'])->name('front.category');
 Route::get('/front/{slug}',[\App\Http\Controllers\FrontController::class,'show'])->name('front.show');
 Route::get('fronts/about',[\App\Http\Controllers\FrontController::class,'about'])->name('front.about');
 Route::get('fronts/contact',[\App\Http\Controllers\FrontController::class,'contact'])->name('front.contact');
 Route::post('fronts/send',[\App\Http\Controllers\FrontController::class,'send'])->name('front.send');
 Route::get('fronts/vakansia',[\App\Http\Controllers\FrontController::class,'vakansia'])->name('front.vakansia');
-
 
 
 //admin
