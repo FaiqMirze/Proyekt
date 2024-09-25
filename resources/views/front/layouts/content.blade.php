@@ -21,7 +21,14 @@
                     <h1>Bu kategoriye aid xəbər yoxdur!</h1>
                 </div>
             @endif
-            <!-- Pager-->
+                <div class="d-flex justify-content-between mb-4 ">
+                    @if($articles->onFirstPage())
+                        <span></span>
+                    @else
+                        <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="{{$articles->previousPageUrl()}}">Never Posts </a></div>
+                    @endif
+
+                    <!-- Pager-->
             @if($articles->hasMorePages())
                 <div class="d-flex justify-content-end mb-4">
                     <a class="btn btn-primary text-uppercase" href="{{ $articles->nextPageUrl() }}">Older Posts →</a>
@@ -29,4 +36,5 @@
             @endif
         </div>
     </div>
+</div>
 </div>
