@@ -34,7 +34,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Articles Tables Example</h6>
+            <h6 class="m-0 font-weight-bold text-primary"> Create Category</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -49,30 +49,15 @@
                     </div>
                 @endif
 
-                <form action="{{route('admin.articles.store')}}" method="Post" enctype="multipart/form-data">
+                <form action="{{route('admin.category.store')}}" method="Post">
                     @csrf
                     @method('POST')
                     <div class="form-group">
-                        <label for="">Məqalə Basligi</label>
-                        <input type="text" name="title" class="form-control" required>
+                        <label for="">Kategory Basligi</label>
+                        <input type="text" name="name" class="form-control" required>
                     </div>
-                    <div class="form-group">
-                        <label for="">Məqale Category</label>
-                        <select class="form-control"  name="category_name" required>
-                        <option value="">Secim edin</option>
-                        @foreach($categories as $category)
-                            <option value="{{$category->name}}">{{$category->name}} </option>
-                        @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Məqale Şəkli</label>
-                        <input type="file" name="image" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Məqale Məzmunu</label>
-                        <textarea  name="content" class="form-control" rows="4" required></textarea>
-                    </div>
+
+
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-block">Create</button>
                     </div>
@@ -139,5 +124,6 @@
 </body>
 
 </html>
+
 
 

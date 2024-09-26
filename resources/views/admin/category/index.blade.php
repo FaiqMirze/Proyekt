@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Tables</title>
+    <title>Admin - Tables</title>
 
     <!-- Custom fonts for this template -->
     <link href="{{asset('admin/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -38,45 +39,43 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach($errors->all() as $error)
-                                <li>{{$error}}</li>
-                            @endforeach
-                        </ul>
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{session('success')}}
                     </div>
                 @endif
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Slug</th>
+                        <th>Created_at</th>
+                        <th>Updated_at</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
 
-                <form action="{{route('admin.articles.store')}}" method="Post" enctype="multipart/form-data">
-                    @csrf
-                    @method('POST')
-                    <div class="form-group">
-                        <label for="">Məqalə Basligi</label>
-                        <input type="text" name="title" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Məqale Category</label>
-                        <select class="form-control"  name="category_name" required>
-                        <option value="">Secim edin</option>
-                        @foreach($categories as $category)
-                            <option value="{{$category->name}}">{{$category->name}} </option>
-                        @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Məqale Şəkli</label>
-                        <input type="file" name="image" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Məqale Məzmunu</label>
-                        <textarea  name="content" class="form-control" rows="4" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block">Create</button>
-                    </div>
-                </form>
+                    <tbody>
+                    @foreach($categories as $category)
+                        <tr>
+
+                            <td>{{$category->name}}</td>
+                            <td>{{$category->slug}}</td>
+                            <td>{{$category->created_at}}</td>
+                            <td>{{$category->updated_at}}</td>
+                            <td>
+                                <a href="{{route('admin.category.show',$category->id)}}"  class="btn btn-sm btn-success"><i class="fa fa-eye"></i> View</a>
+                                <a href="{{route('admin.category.edit',$category->id)}}"  class="btn btn-sm btn-primary"><i class="fa fa-pen"></i> Edit</a>
+                                <form action="{{route('admin.category.destroy',$category->id)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"  class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -113,7 +112,7 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="{{asset('admin/login.html')}}">Logout</a>
+                <a class="btn btn-primary" href="login.html">Logout</a>
             </div>
         </div>
     </div>
@@ -139,5 +138,4 @@
 </body>
 
 </html>
-
 
