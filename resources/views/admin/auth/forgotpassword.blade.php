@@ -41,40 +41,41 @@
                         <div class="col-lg-6">
                             <div class="p-5" >
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                    <h1 class="h4 text-gray-900 mb-4">Forgot Your Password</h1>
                                 </div>
                                 @if($errors->any())
                                     <div class=" alert alert-danger">{{$errors->first()}}</div>
                                 @endif
-                                <form class="user" action="{{route('admin.login.post')}}" method="Post">
+                                <form class="user" action="{{route('admin.forgot-password')}}" method="Post">
                                     @csrf
+                                    @if(session('success'))
+                                        <div class="alert alert-success">
+                                            {{session('success')}}
+                                        </div>
+                                    @endif
                                     <div class="form-group">
                                         <input type="email" name="email" class="form-control form-control-user"
                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                               placeholder="Enter Email Address...">
+                                               placeholder="Enter  Your Email ...">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" name="password" class="form-control form-control-user"
-                                               id="exampleInputPassword" placeholder="Password">
+                                        <input type="password" name="new_password" class="form-control form-control-user"
+                                               id="exampleInputPassword" placeholder=" Enter New Password">
                                     </div>
                                     <div class="form-group">
+                                        <input type="password" name="new_password_confirmation" class="form-control form-control-user"
+                                               id="exampleInputPassword" placeholder=" Confirm New Password">
+                                    </div>
 
-                                    </div>
                                     <button type="submit" class="btn btn-primary btn-user btn-block">
-                                        Login
+                                        Reset Password
                                     </button>
-{{--                        <a href="#" class="btn btn-primary btn-user btn-block">Register</a>--}}
-
+                                    {{--                        <a href="#" class="btn btn-primary btn-user btn-block">Register</a>--}}
                                 </form>
                                 <div class="text-center mt-4">
-                                    <a class="small" href="{{route('admin.forgot-password')}}">Forgot Password</a>
+                                    <a class="small" href="{{route('admin.login')}}">Back to Login</a>
                                 </div>
-                               <div class="text-center  mt-4">
-                                   <p>
-                                       Don't have an account yet?
-                                       <a href="{{route('admin.register')}}">Register</a>
-                                   </p>
-                               </div>
+
 
                             </div>
                         </div>

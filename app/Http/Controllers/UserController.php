@@ -17,7 +17,8 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.     */
     public function store(UserStoreRequest $request)    {
-        $user = new Admin();        $user->name = $request->input('name');
+        $user = new Admin();
+        $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = $request->input('password');
         $user->save();
@@ -40,7 +41,8 @@ class UserController extends Controller
         return redirect()->route('admin.users.index')->with('success', 'User updated successfully');
     }
     /**     * Remove the specified resource from storage.
-     */    public function destroy(string $id)
+     */
+    public function destroy(string $id)
 {        $user = Admin::findOrFail($id);
          $user->delete();
          return redirect()->route('admin.users.index')->with('success', 'User deleted successfully');

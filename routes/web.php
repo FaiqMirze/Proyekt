@@ -36,7 +36,8 @@ Route::get('admin/login', [\App\Http\Controllers\AuthController::class, 'login']
 Route::post('admin/login/post', [\App\Http\Controllers\AuthController::class, 'loginpost'])->name('admin.login.post');
 Route::get('admin/register',[\App\Http\Controllers\AuthController::class,'showRegisterForm'])->name('admin.register');
 Route::post('admin/register/post',[\App\Http\Controllers\AuthController::class,'register'])->name('admin.register.post');
-
+Route::get('admin/forgot-password',[\App\Http\Controllers\AuthController::class,'showForgotForm'])->name('admin.forgot-password');
+Route::post('admin/forgot-password',[\App\Http\Controllers\AuthController::class,'changePassword'])->name('admin.forgot-password.post');
 
 
 

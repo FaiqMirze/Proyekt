@@ -49,5 +49,23 @@ class AuthController extends Controller
              'password' => Hash::make($request->password),
          ]);
          return redirect()->route('admin.login')->with('success', 'you have ben registered succsessfully');
-     }}
+     }
+         public function showForgotForm ()
+         {
+             return view('admin.auth.forgotpassword');
+
+}
+         public function changePassword(Request $request)
+     {
+          $request->validate([
+              'email'=>'required',
+              'new_password'=>'required',
+          ]);
+            $admin=Admin::where('email',$request->email) ->first() ;
+            $admin->password=Hash::make($request->new_password);
+            $admin->save();
+            return redirect()->route('admin.login')->with('success', 'Password deyisdi');
+     }
+
+     }
 
